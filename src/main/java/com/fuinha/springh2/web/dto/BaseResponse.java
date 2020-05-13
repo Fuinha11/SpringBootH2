@@ -27,7 +27,10 @@ public class BaseResponse<T> {
             this.error = new Error(((CustomException) payload).getCode(), ((CustomException) payload).getMessage());
             status = ((CustomException) payload).getStatus();
         } else if (payload instanceof Exception) {
-            this.error = new Error(500, ((Exception) payload).getClass().getName());
+            this.error = new Error(500, 
+            ((Exception) payload).getClass().getName() 
+                + " Cause: " 
+                + ((Exception) payload).getCause().toString());
             status = HttpStatus.INTERNAL_SERVER_ERROR;
         } else {
             this.payload = payload;

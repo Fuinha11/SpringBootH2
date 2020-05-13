@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class EditMovmentDto {
+public class EditMovementDto {
     private Integer id;
     private Float value;
     private String description;
