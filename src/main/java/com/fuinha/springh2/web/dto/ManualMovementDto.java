@@ -2,12 +2,14 @@ package com.fuinha.springh2.web.dto;
 
 import java.time.format.DateTimeFormatter;
 
-import com.fuinha.springh2.data.entity.ManualMovment;
+import com.fuinha.springh2.data.entity.ManualMovement;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class ManualMovmentDto {
+@AllArgsConstructor
+public class ManualMovementDto {
     private Integer id;
     private Integer month;
     private Integer year;
@@ -15,10 +17,10 @@ public class ManualMovmentDto {
     private ProductCosifDto productCosif;
     private Float value;
     private String description;
-    private String movmentDate;
+    private String movementDate;
     private String userCode;
 
-    public ManualMovmentDto(ManualMovment m) {
+    public ManualMovementDto(ManualMovement m) {
         this.id = m.getId();
         this.month = m.getMonth();
         this.year = m.getYear();
@@ -26,7 +28,7 @@ public class ManualMovmentDto {
         this.productCosif = new ProductCosifDto(m.getProductCosif());
         this.value = m.getValue();
         this.description = m.getDescription();
-        this.movmentDate = m.getMovmentDate().format(DateTimeFormatter.ofPattern("yyyy-MM-ddThh:mm:ss"));
+        this.movementDate = m.getMovementDate().format(DateTimeFormatter.ISO_DATE_TIME);
         this.userCode = m.getUserCode();
     }
 }

@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "MOVIMENTO_MANUAL")
-public class ManualMovment {
+public class ManualMovement {
 	@Id
     @Column(name = "NUM_LANCAMENTO")
     @GeneratedValue
@@ -42,7 +42,7 @@ public class ManualMovment {
     private String description;    
 
     @Column(name = "DAT_MOVIMENTO")
-    private LocalDateTime movmentDate;
+    private LocalDateTime movementDate;
 
     @Column(name = "COD_USUARIO")
     private String userCode;    

@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CreateMovmentDto {
+public class CreateMovementDto {
     @NonNull
     private Integer month;
     @NonNull
@@ -19,7 +19,7 @@ public class CreateMovmentDto {
     @NonNull
     private Integer cosifId;
     @NonNull
-    private LocalDateTime movmentDate;
+    private LocalDateTime movementDate;
     private Float value;
     private String description;
     private String userCode;
