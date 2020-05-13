@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ManualMovementDto {
-    private Integer id;
+    private Integer number;
     private Integer month;
     private Integer year;
     private ProductDto product;
@@ -21,7 +21,7 @@ public class ManualMovementDto {
     private String userCode;
 
     public ManualMovementDto(ManualMovement m) {
-        this.id = m.getId();
+        this.number = m.getNumber();
         this.month = m.getMonth();
         this.year = m.getYear();
         this.product = new ProductDto(m.getProduct(), false);

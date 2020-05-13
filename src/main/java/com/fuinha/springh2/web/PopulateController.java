@@ -40,7 +40,7 @@ public class PopulateController {
                     for (int k = 0; k < 2; k++) {
                         LocalDateTime date = LocalDateTime.now();
                         movementService.createMovement(
-                                new CreateMovementDto(date.getMonthValue(), date.getYear(), p.getId(), c.getId(), date,
+                                new CreateMovementDto(date.getMonthValue(), date.getYear(), p.getId(), c.getId(),
                                         Float.valueOf(i * j * k), "description" + i + j + k, "userCode" + i + j + k));
                     }
                 }
