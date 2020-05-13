@@ -42,23 +42,27 @@ public class MovementController {
         }
     }
 
-    @GetMapping("/movement/{id}")
-    public ResponseEntity<BaseResponse<ManualMovementDto>> getMovement(@PathVariable(name = "id") Integer id) {
+    @GetMapping("/month/{month}/year/{year}/movement/{number}")
+    public ResponseEntity<BaseResponse<ManualMovementDto>> getMovement(@PathVariable(name = "month") Integer month,
+            @PathVariable(name = "year") Integer year, @PathVariable(name = "number") Integer number) {
         try {
-            ManualMovement movement = service.getMovement(id);
+            ManualMovement movement = service.getMovement(month, year, number);
             return new BaseResponse<>(new ManualMovementDto(movement)).ok();
         } catch (Exception e) {
             return new BaseResponse(e).error();
         }
     }
 
-    @PutMapping("/movement/{id}")
-    public ResponseEntity<BaseResponse<ManualMovementDto>> updateMovement(@PathVariable(name = "id") Integer id,
+    @PutMapping("/month/{month}/year/{year}/movement/{number}")
+    public ResponseEntity<BaseResponse<ManualMovementDto>> updateMovement(@PathVariable(name = "month") Integer month,
+            @PathVariable(name = "year") Integer year, @PathVariable(name = "number") Integer number,
             @RequestBody EditMovementDto dto) {
         try {
             if (Objects.isNull(dto))
                 throw new NullBodyException();
-            dto.setId(id);
+            dto.setMonth(month);
+            dto.setYear(year);
+            dto.setNumber(number);
             ManualMovement movement = service.updateMovement(dto);
             return new BaseResponse<>(new ManualMovementDto(movement)).ok();
         } catch (Exception e) {
@@ -78,10 +82,11 @@ public class MovementController {
         }
     }
 
-    @DeleteMapping("/movement/{id}")
-    public ResponseEntity<BaseResponse> deleteMovement(@PathVariable(name = "id") Integer id) {
+    @DeleteMapping("/month/{month}/year/{year}/movement/{number}")
+    public ResponseEntity<BaseResponse> deleteMovement(@PathVariable(name = "month") Integer month,
+            @PathVariable(name = "year") Integer year, @PathVariable(name = "number") Integer number) {
         try {
-            service.deleteMovement(id);
+            service.deleteMovement(month, year, number);
             return new BaseResponse(null).deleted();
         } catch (Exception e) {
             return new BaseResponse(e).error();

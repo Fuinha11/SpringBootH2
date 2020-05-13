@@ -6,7 +6,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class EditMovementDto {
-    private Integer id;
+    private Integer month;
+    private Integer year;
+    private Integer number;
     private Float value;
     private String description;
     private String userCode;

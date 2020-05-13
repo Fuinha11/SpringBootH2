@@ -1,7 +1,5 @@
 package com.fuinha.springh2.web.dto;
 
-import java.time.LocalDateTime;
-
 import org.springframework.lang.NonNull;
 
 import lombok.AllArgsConstructor;
@@ -18,8 +16,6 @@ public class CreateMovementDto {
     private Integer productId;
     @NonNull
     private Integer cosifId;
-    @NonNull
-    private LocalDateTime movementDate;
     private Float value;
     private String description;
     private String userCode;
