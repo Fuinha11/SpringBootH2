@@ -5,12 +5,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.fuinha.springh2.data.entity.Product;
-import com.fuinha.springh2.data.entity.ProductCosif;
 import com.fuinha.springh2.exception.NullBodyException;
 import com.fuinha.springh2.service.ProductService;
 import com.fuinha.springh2.web.dto.BaseResponse;
 import com.fuinha.springh2.web.dto.CreateProductDto;
-import com.fuinha.springh2.web.dto.ProductCosifDto;
 import com.fuinha.springh2.web.dto.ProductDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ProductControler {
+public class ProductController {
 
     @Autowired
     private ProductService service;
@@ -85,16 +83,4 @@ public class ProductControler {
             return new BaseResponse(e).error();
         }
     }
-
-    @GetMapping("/product/{id}/cosifs")
-    public ResponseEntity<BaseResponse<List<ProductCosifDto>>> getAllCosifs(@PathVariable(name = "id") Integer id) {
-        try {
-            List<ProductCosif> allProducts = service.getAllCosifsByProductId(id);
-            return new BaseResponse<List<ProductCosifDto>>(
-                    allProducts.stream().map(p -> new ProductCosifDto(p)).collect(Collectors.toList())).ok();
-        } catch (Exception e) {
-            return new BaseResponse(e).error();
-        }
-    }
-
 }
