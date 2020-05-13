@@ -1,8 +1,6 @@
 package com.fuinha.springh2.web;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import com.fuinha.springh2.data.entity.ProductCosif;
 import com.fuinha.springh2.exception.NullBodyException;
@@ -26,18 +24,6 @@ public class CosifController {
 
     @Autowired
     private ProductService service;
-
-    @GetMapping("/product/{productId}/cosifs")
-    public ResponseEntity<BaseResponse<List<ProductCosifDto>>> getAllCosifsForProduct(
-            @PathVariable(name = "productId") Integer productId) {
-        try {
-            List<ProductCosif> allProducts = service.getAllCosifsByProductId(productId);
-            return new BaseResponse<List<ProductCosifDto>>(
-                    allProducts.stream().map(p -> new ProductCosifDto(p)).collect(Collectors.toList())).ok();
-        } catch (Exception e) {
-            return new BaseResponse(e).error();
-        }
-    }
 
     @GetMapping("/cosif/{cosifId}")
     public ResponseEntity<BaseResponse<ProductCosifDto>> getCosif(@PathVariable(name = "cosifId") Integer cosifId) {

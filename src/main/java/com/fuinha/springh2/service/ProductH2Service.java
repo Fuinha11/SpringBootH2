@@ -80,7 +80,7 @@ public class ProductH2Service implements ProductService {
 
     @Override
     public ProductCosif createCosif(CreateCosifDto dto) throws EntityNotFoundException {
-        Product product = productRepository.getOne(dto.getProductId());
+        Product product = getProduct(dto.getProductId());
         ProductCosif cosif = new ProductCosif();
         cosif.setProduct(product);
         cosif.setClassification(dto.getClassification());

@@ -1,8 +1,6 @@
 package com.fuinha.springh2.web.dto;
 
-import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
 import com.fuinha.springh2.data.entity.ManualMovment;
 
@@ -13,10 +11,10 @@ public class ManualMovmentDto {
     private Integer id;
     private Integer month;
     private Integer year;
-    private ProductDto product; 
-    private ProductCosifDto productCosif;    
-    private Float value;    
-    private String description;    
+    private ProductDto product;
+    private ProductCosifDto productCosif;
+    private Float value;
+    private String description;
     private String movmentDate;
     private String userCode;
 
@@ -24,7 +22,7 @@ public class ManualMovmentDto {
         this.id = m.getId();
         this.month = m.getMonth();
         this.year = m.getYear();
-        this.product = new ProductDto(m.getProduct());
+        this.product = new ProductDto(m.getProduct(), false);
         this.productCosif = new ProductCosifDto(m.getProductCosif());
         this.value = m.getValue();
         this.description = m.getDescription();

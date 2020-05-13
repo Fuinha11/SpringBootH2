@@ -19,10 +19,14 @@ public class ProductDto {
     private List<ProductCosifDto> cosifList;
 
     public ProductDto(Product product) {
+        this(product, true);
+    }
+
+    public ProductDto(Product product, Boolean showCosifs) {
         this.id = product.getId();
         this.description = product.getDescription();
         this.status = product.getStatus();
-        if (Objects.nonNull(product.getCosifs()))
+        if (Objects.nonNull(product.getCosifs()) && showCosifs)
             this.cosifList = product
                                 .getCosifs()
                                 .stream()
