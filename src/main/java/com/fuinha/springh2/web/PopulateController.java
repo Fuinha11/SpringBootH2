@@ -1,6 +1,7 @@
 package com.fuinha.springh2.web;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 import com.fuinha.springh2.data.entity.Product;
 import com.fuinha.springh2.data.entity.ProductCosif;
@@ -39,9 +40,9 @@ public class PopulateController {
                             .createCosif(new CreateCosifDto(p.getId(), "classification" + i + j));
                     for (int k = 0; k < 2; k++) {
                         LocalDateTime date = LocalDateTime.now();
-                        movementService.createMovement(
-                                new CreateMovementDto(date.getMonthValue(), date.getYear(), p.getId(), c.getId(),
-                                        Float.valueOf(i * j * k), "description" + i + j + k, "userCode" + i + j + k));
+                        movementService.createMovement(new CreateMovementDto(date.getMonthValue(), date.getYear(),
+                                p.getId(), c.getId(), new Random().nextFloat() * 10000, "description" + i + j + k,
+                                "userCode" + i + j + k));
                     }
                 }
             }
